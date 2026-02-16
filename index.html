@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monterrey 2025 — Guía socioeconómica para recién egresados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════ RESET & VARIABLES ═══════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --c-bg: #0c0f14;
+  --c-bg2: #12161e;
+  --c-bg3: #1a1f2b;
+  --c-surface: #222838;
+  --c-border: #2a3040;
+  --c-text: #cdd6e4;
+  --c-text-dim: #7a8599;
+  --c-text-bright: #eef1f6;
+  --c-accent: #f59e0b;
+  --c-accent2: #fb923c;
+  --c-accent-dim: rgba(245, 158, 11, 0.15);
+  --c-danger: #ef4444;
+  --c-success: #22c55e;
+  --c-info: #3b82f6;
+  --c-purple: #a78bfa;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Outfit', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--c-accent);
+  color: var(--c-bg);
+}
+
+/* ═══════════════════ GRAIN OVERLAY ═══════════════════ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* ═══════════════════ NAVIGATION ═══════════════════ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(12, 15, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--c-border);
+  transition: transform 0.4s var(--ease);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--c-accent);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--c-text-dim);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.25s;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--c-accent);
+  background: var(--c-accent-dim);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--c-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ═══════════════════ HERO ═══════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(transparent, var(--c-bg));
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: var(--c-accent-dim);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s var(--ease) both;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--c-accent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  color: var(--c-text-bright);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  animation: fadeUp 0.8s 0.15s var(--ease) both;
+}
+
+.hero h1 em {
+  color: var(--c-accent);
+  font-style: italic;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--c-text-dim);
+  max-width: 620px;
+  margin-top: 1.5rem;
+  font-weight: 300;
+  animation: fadeUp 0.8s 0.3s var(--ease) both;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  animation: fadeUp 0.8s 0.45s var(--ease) both;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat-value {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--c-accent);
+  display: block;
+}
+
+.hero-stat-label {
+  font-size: 0.75rem;
+  color: var(--c-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  z-index: 2;
+  animation: fadeUp 0.8s 0.6s var(--ease) both, float 3s ease-in-out infinite;
+}
+
+.hero-scroll svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--c-text-dim);
+  fill: none;
+  stroke-width: 2;
+}
+
+/* ═══════════════════ SECTIONS ═══════════════════ */
+.section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--c-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--c-accent);
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--c-text-bright);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.section-intro {
+  font-size: 1.05rem;
+  color: var(--c-text-dim);
+  max-width: 680px;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+/* ═══════════════════ DIVIDER ═══════════════════ */
+.divider {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.divider-line {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-border), transparent);
+}
+
+/* ═══════════════════ METHODOLOGY GRID ═══════════════════ */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.method-card {
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.method-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent2));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.method-card:hover {
+  border-color: rgba(245,158,11,0.3);
+  transform: translateY(-4px);
+}
+
+.method-card:hover::before {
+  opacity: 1;
+}
+
+.method-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--c-accent-dim);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+}
+
+.method-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--c-text-bright);
+  margin-bottom: 0.75rem;
+}
+
+.method-card p {
+  font-size: 0.9rem;
+  color: var(--c-text-dim);
+  line-height: 1.65;
+}
+
+/* ═══════════════════ SALARY SECTION ═══════════════════ */
+.salary-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.salary-viz {
+  position: relative;
+}
+
+.salary-big {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: var(--c-accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.salary-big small {
+  font-size: 0.35em;
+  color: var(--c-text-dim);
+  font-weight: 400;
+  vertical-align: super;
+}
+
+.salary-range {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.salary-range-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--c-bg3);
+  border-radius: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.salary-range-fill {
+  position: absolute;
+  top: 0;
+  left: 18%;
+  right: 23%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-accent2), var(--c-accent));
+  border-radius: 100px;
+}
+
+.salary-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--c-text-dim);
+  margin-top: 0.5rem;
+}
+
+.salary-context {
+  padding: 2rem;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+}
+
+.salary-context h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--c-text-bright);
+  margin-bottom: 1rem;
+}
+
+.salary-context p {
+  font-size: 0.92rem;
+  color: var(--c-text-dim);
+  line-height: 1.7;
+}
+
+.salary-sources {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.source-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  background: var(--c-bg3);
+  border: 1px solid var(--c-border);
+  border-radius: 100px;
+  color: var(--c-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ═══════════════════ RENT ZONES ═══════════════════ */
+.rent-zones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.zone-card {
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.4s var(--ease);
+  overflow: hidden;
+}
+
+.zone-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245,158,11,0.3);
+}
+
+.zone-tier {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.zone-card.core .zone-tier {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--c-danger);
+}
+
+.zone-card.mid .zone-tier {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--c-accent);
+}
+
+.zone-card.outer .zone-tier {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--c-success);
+}
+
+.zone-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--c-text-bright);
+  margin-bottom: 0.5rem;
+}
+
+.zone-desc {
+  font-size: 0.82rem;
+  color: var(--c-text-dim);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.zone-price {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.zone-card.core .zone-price { color: var(--c-danger); }
+.zone-card.mid .zone-price { color: var(--c-accent); }
+.zone-card.outer .zone-price { color: var(--c-success); }
+
+.zone-price small {
+  font-size: 0.4em;
+  color: var(--c-text-dim);
+  font-weight: 400;
+}
+
+.zone-range {
+  font-size: 0.78rem;
+  color: var(--c-text-dim);
+  font-family: var(--font-mono);
+}
+
+.zone-munis {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--c-border);
+  font-size: 0.8rem;
+  color: var(--c-text-dim);
+  line-height: 1.6;
+}
+
+.zone-munis strong {
+  color: var(--c-text);
+  font-weight: 500;
+}
+
+/* ══════ SALARY VS RENT VISUAL ══════ */
+.rent-vs-salary {
+  margin-top: 3rem;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 2.5rem;
+}
+
+.rent-vs-salary h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--c-text-bright);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 80px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bar-label {
+  font-size: 0.82rem;
+  color: var(--c-text);
+  text-align: right;
+  font-weight: 500;
+}
+
+.bar-track {
+  height: 32px;
+  background: var(--c-bg3);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1.5s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--c-bg);
+}
+
+.bar-pct {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.bar-pct.danger { color: var(--c-danger); }
+.bar-pct.warn { color: var(--c-accent); }
+.bar-pct.ok { color: var(--c-success); }
+
+.bar-note {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--c-text-dim);
+  font-style: italic;
+}
+
+/* ═══════════════════ BUDGET BREAKDOWN ═══════════════════ */
+.budget-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.budget-donut-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.budget-donut-container svg {
+  width: 320px;
+  height: 320px;
+}
+
+.donut-center-text {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  fill: var(--c-text-bright);
+}
+
+.donut-center-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  fill: var(--c-text-dim);
+}
+
+.budget-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.budget-item {
+  display: grid;
+  grid-template-columns: 12px 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  transition: all 0.3s var(--ease);
+}
+
+.budget-item:hover {
+  border-color: rgba(245,158,11,0.3);
+  transform: translateX(4px);
+}
+
+.budget-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+}
+
+.budget-item-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--c-text);
+}
+
+.budget-item-value {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--c-text-bright);
+}
+
+.budget-item-range {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--c-text-dim);
+}
+
+/* ═══════════════════ IMPLICATIONS ═══════════════════ */
+.implication-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.impl-card {
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.impl-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.impl-card.stress::after { background: rgba(239,68,68,0.05); }
+.impl-card.floor::after { background: rgba(59,130,246,0.05); }
+.impl-card.mobility::after { background: rgba(167,139,250,0.05); }
+
+.impl-number {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--c-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.impl-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--c-text-bright);
+  margin-bottom: 1rem;
+}
+
+.impl-card p {
+  font-size: 0.88rem;
+  color: var(--c-text-dim);
+  line-height: 1.7;
+}
+
+/* ═══════════════════ CONCLUSION ═══════════════════ */
+.conclusion-box {
+  background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(251,146,60,0.04));
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.conclusion-box p {
+  font-size: 1.05rem;
+  color: var(--c-text);
+  line-height: 1.8;
+}
+
+.conclusion-box strong {
+  color: var(--c-accent);
+  font-weight: 600;
+}
+
+/* ═══════════════════ TABLE ═══════════════════ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--c-border);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.data-table thead {
+  background: var(--c-bg3);
+}
+
+.data-table th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--c-text);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--c-border);
+}
+
+.data-table td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-text-dim);
+  vertical-align: top;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr {
+  transition: background 0.2s;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(245,158,11,0.03);
+}
+
+.data-table .num {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--c-text-bright);
+}
+
+.data-table .total-row {
+  background: var(--c-accent-dim);
+}
+
+.data-table .total-row td {
+  color: var(--c-text-bright);
+  font-weight: 600;
+}
+
+/* ═══════════════════ SOURCES ═══════════════════ */
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.source-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  transition: all 0.3s var(--ease);
+}
+
+.source-item:hover {
+  border-color: rgba(245,158,11,0.3);
+}
+
+.source-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-accent);
+  background: var(--c-accent-dim);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.source-item p {
+  font-size: 0.82rem;
+  color: var(--c-text-dim);
+  line-height: 1.6;
+}
+
+.source-item a {
+  color: var(--c-info);
+  text-decoration: none;
+  word-break: break-all;
+  font-size: 0.75rem;
+}
+
+.source-item a:hover {
+  text-decoration: underline;
+}
+
+/* ═══════════════════ FOOTER ═══════════════════ */
+footer {
+  text-align: center;
+  padding: 4rem 2rem;
+  border-top: 1px solid var(--c-border);
+  margin-top: 2rem;
+}
+
+footer p {
+  font-size: 0.82rem;
+  color: var(--c-text-dim);
+}
+
+footer a {
+  color: var(--c-accent);
+  text-decoration: none;
+}
+
+/* ═══════════════════ ANIMATIONS ═══════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════ RESPONSIVE ═══════════════════ */
+@media (max-width: 900px) {
+  .salary-hero { grid-template-columns: 1fr; }
+  .budget-layout { grid-template-columns: 1fr; }
+  .rent-zones { grid-template-columns: 1fr; }
+  .bar-row { grid-template-columns: 120px 1fr 60px; }
+  .bar-label { font-size: 0.72rem; }
+  .hero-stats { gap: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--c-bg);
+    border-bottom: 1px solid var(--c-border);
+    padding: 1rem;
+  }
+  .nav-toggle { display: block; }
+  .section { padding: 4rem 1.25rem; }
+  .hero-stats { flex-direction: column; gap: 1rem; }
+  .bar-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  .bar-label { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">MTY 2025</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#resumen">Resumen</a></li>
+      <li><a href="#metodologia">Método</a></li>
+      <li><a href="#salario">Salario</a></li>
+      <li><a href="#renta">Renta</a></li>
+      <li><a href="#presupuesto">Presupuesto</a></li>
+      <li><a href="#implicaciones">Análisis</a></li>
+      <li><a href="#fuentes">Fuentes</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero" id="resumen">
+  <div class="hero-badge">Investigación 2025 · Datos oficiales</div>
+  <h1>¿Cuánto cuesta vivir <em>solo</em> en Monterrey?</h1>
+  <p class="hero-subtitle">Análisis socioeconómico para recién egresados de Ingeniería Industrial. Con datos de INEGI, STPS, e índices inmobiliarios locales.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-value">$20k</span>
+      <span class="hero-stat-label">Sueldo mensual</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-value">$25.8k</span>
+      <span class="hero-stat-label">Gasto zona media</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-value">129%</span>
+      <span class="hero-stat-label">Déficit estimado</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ════════ EXECUTIVE SUMMARY ════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<section class="section reveal" id="resumen-exec">
+  <div class="section-label">Resumen Ejecutivo</div>
+  <h2>El sistema opera sin margen</h2>
+  <p class="section-intro">
+    En 2025, el escenario económico de un recién egresado buscando independencia residencial en Monterrey se parece a un <strong style="color:var(--c-text-bright)">sistema térmico donde el "calor" principal</strong> — la renta — consume casi toda la energía disponible del sueldo, dejando muy poco para los demás subsistemas.
+  </p>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-icon">💰</div>
+      <h3>Sueldo de entrada</h3>
+      <p>~$20,000 MXN/mes para Ing. Industrial recién egresado en Monterrey. Rango $17,366–$23,000 según fuentes cruzadas (OLA, Indeed, bolsas de empleo).</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🏠</div>
+      <h3>Renta por zona</h3>
+      <p>Desde ~$7,100/mes fuera del AMM hasta ~$27,200/mes en el núcleo. La zona media (cinturón conurbado) promedia ~$18,150/mes — prácticamente el sueldo completo.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">📊</div>
+      <h3>Presupuesto total</h3>
+      <p>El gasto mensual realista en zona media (con renta) cae alrededor de $25,793/mes — superando el ingreso de entrada en ~29%.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ METHODOLOGY ════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<section class="section reveal" id="metodologia">
+  <div class="section-label">Metodología</div>
+  <h2>Tres fuentes de evidencia cruzada</h2>
+  <p class="section-intro">La investigación triangula datos oficiales con señales de mercado para construir estimaciones robustas. Cada cifra lleva su fuente y fecha de anclaje.</p>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-icon">📋</div>
+      <h3>Estadística laboral oficial</h3>
+      <p>Observatorio Laboral (datos ENOE 1T-2025): ingresos promedio por área y carrera. Funciona como la "línea base" del mercado formal.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🛒</div>
+      <h3>Canastas y umbrales INEGI</h3>
+      <p>Líneas de pobreza (alimentaria y total) con periodicidad mensual 2025. Ofrecen el "piso" monetario por persona para consumo mínimo.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🏢</div>
+      <h3>Mercado inmobiliario local</h3>
+      <p>Índice de Inmuebles24 (ene-2026): renta/venta por municipio y colonia. Se retroestima a 2025 con la variación anual reportada.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:2.5rem; padding:2rem; background:var(--c-bg2); border:1px solid var(--c-border); border-radius:16px;">
+    <h3 style="font-family:var(--font-display); font-size:1.15rem; color:var(--c-text-bright); margin-bottom:1rem;">Supuestos del modelo</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1rem; font-size:0.85rem; color:var(--c-text-dim);">
+      <div><strong style="color:var(--c-text)">Vivienda:</strong> Depto. 2 recámaras (unidad tipo del índice)</div>
+      <div><strong style="color:var(--c-text)">Persona:</strong> 1 persona, sin dependientes</div>
+      <div><strong style="color:var(--c-text)">Electricidad:</strong> 150–300 kWh/mes</div>
+      <div><strong style="color:var(--c-text)">Agua:</strong> 7–12 m³/mes</div>
+      <div><strong style="color:var(--c-text)">Gas LP:</strong> 10–20 kg/mes</div>
+      <div><strong style="color:var(--c-text)">Transporte:</strong> Público (camión/metro) como base</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SALARY ════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<section class="section reveal" id="salario">
+  <div class="section-label">Mercado Laboral</div>
+  <h2>Sueldo mensual para recién egresado</h2>
+  <p class="section-intro">Ingeniería Industrial en Monterrey, triangulado con tres fuentes independientes para 2025.</p>
+
+  <div class="salary-hero">
+    <div class="salary-viz">
+      <div class="salary-big">$20,000<small>MXN/mes</small></div>
+      <div class="salary-range">
+        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--c-text-dim)">$17.4k</span>
+        <div class="salary-range-bar"><div class="salary-range-fill"></div></div>
+        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--c-text-dim)">$23k</span>
+      </div>
+
+      <div class="salary-sources" style="margin-top:2rem;">
+        <span class="source-tag">OLA 1T-2025</span>
+        <span class="source-tag">Indeed Jul-2025</span>
+        <span class="source-tag">OCCMundial</span>
+      </div>
+    </div>
+
+    <div class="salary-context">
+      <h3>¿Cómo se construye esta cifra?</h3>
+      <p>El promedio general publicado por el Observatorio Laboral es $20,100/mes para "Ingeniería Industrial, Mecánica y Metalurgia" — pero incluye todos los niveles de experiencia.</p>
+      <p style="margin-top:0.75rem;">Para recién egresados (0–2 años) se triangula con: Indeed Monterrey Centro reportando $17,366/mes, y ofertas en bolsas de empleo mostrando rangos de $18,000–$23,000/mes.</p>
+      <p style="margin-top:0.75rem; color:var(--c-text-bright); font-weight:500;">Este salario de entrada funciona como un caudal que debe alimentar varios subsistemas: vivienda, movilidad, alimentos, servicios. Si uno de ellos consume >50%, el margen operativo se comprime hasta volverse inviable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ RENT ════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<section class="section reveal" id="renta">
+  <div class="section-label">Vivienda en Renta</div>
+  <h2>Tres zonas, tres realidades</h2>
+  <p class="section-intro">Definidas con criterio urbano-funcional. Los precios se retroestimaron a 2025 desde el índice inmobiliario de enero 2026 usando variación anual reportada.</p>
+
+  <div class="rent-zones">
+    <div class="zone-card core">
+      <span class="zone-tier">Núcleo urbano</span>
+      <div class="zone-name">Centro AMM</div>
+      <p class="zone-desc">Municipios con mayor centralidad y atracción laboral.</p>
+      <div class="zone-price">$27,224<small> /mes</small></div>
+      <div class="zone-range">$24,697 – $29,751</div>
+      <div class="zone-munis"><strong>Referencia:</strong> San Pedro Garza García, promedio "Monterrey" del índice</div>
+    </div>
+    <div class="zone-card mid">
+      <span class="zone-tier">Zona media</span>
+      <div class="zone-name">Franja externa AMM</div>
+      <p class="zone-desc">Cinturón conurbado residencial/industrial.</p>
+      <div class="zone-price">$18,153<small> /mes</small></div>
+      <div class="zone-range">$15,744 – $22,474</div>
+      <div class="zone-munis"><strong>Referencia:</strong> Santa Catarina, San Nicolás, Guadalupe, Apodaca, Escobedo, Juárez</div>
+    </div>
+    <div class="zone-card outer">
+      <span class="zone-tier">Fuera AMM</span>
+      <div class="zone-name">Periferia</div>
+      <p class="zone-desc">Fuera de la conurbación inmediata.</p>
+      <div class="zone-price">$7,109<small> /mes</small></div>
+      <div class="zone-range">$5,673 – $8,545</div>
+      <div class="zone-munis"><strong>Referencia:</strong> Allende, Anáhuac (proyección con inflación general)</div>
+    </div>
+  </div>
+
+  <!-- BAR CHART: rent as % of salary -->
+  <div class="rent-vs-salary">
+    <h3>Renta como % del sueldo de entrada ($20k/mes)</h3>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Núcleo urbano</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:100%; background:linear-gradient(90deg, #ef4444, #dc2626);">$27.2k</div>
+        </div>
+        <div class="bar-pct danger">136%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Zona media</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:90.8%; background:linear-gradient(90deg, #f59e0b, #d97706);">$18.2k</div>
+        </div>
+        <div class="bar-pct warn">91%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Fuera del AMM</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:35.5%; background:linear-gradient(90deg, #22c55e, #16a34a);">$7.1k</div>
+        </div>
+        <div class="bar-pct ok">36%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label" style="color:var(--c-text-dim); font-style:italic">Regla del 30% (ideal)</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:30%; background:linear-gradient(90deg, var(--c-info), #2563eb); opacity:0.5;">$6k</div>
+        </div>
+        <div class="bar-pct" style="color:var(--c-info)">30%</div>
+      </div>
+    </div>
+    <p class="bar-note">La regla empírica sugiere que la renta no debería exceder el 30% del ingreso. Solo la periferia se acerca a ese umbral.</p>
+  </div>
+</section>
+
+<!-- ════════ BUDGET ════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<section class="section reveal" id="presupuesto">
+  <div class="section-label">Presupuesto Mensual</div>
+  <h2>Desglose en zona media</h2>
+  <p class="section-intro">Costo mensual estimado para una persona en la franja externa del AMM. La lógica es un balance de masa/energía: ingreso bruto menos egresos obligatorios.</p>
+
+  <div class="budget-layout">
+    <!-- Donut chart -->
+    <div class="budget-donut-container">
+      <svg viewBox="0 0 200 200">
+        <!-- bg circle -->
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--c-bg3)" stroke-width="24"/>
+        <!-- Renta: 70.4% -->
+        <circle cx="100" cy="100" r="80" fill="none"
+          stroke="#f59e0b" stroke-width="24"
+          stroke-dasharray="352.2 150" stroke-dashoffset="125.7"
+          stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <!-- Mandado: 10.9% -->
+        <circle cx="100" cy="100" r="80" fill="none"
+          stroke="#3b82f6" stroke-width="24"
+          stroke-dasharray="54.8 447.4" stroke-dashoffset="-226.5"
+          stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <!-- Ocio: 7.8% -->
+        <circle cx="100" cy="100" r="80" fill="none"
+          stroke="#a78bfa" stroke-width="24"
+          stroke-dasharray="39 463.2" stroke-dashoffset="-281.3"
+          stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <!-- Servicios: 6.3% -->
+        <circle cx="100" cy="100" r="80" fill="none"
+          stroke="#22c55e" stroke-width="24"
+          stroke-dasharray="31.5 470.7" stroke-dashoffset="-320.3"
+          stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <!-- Transporte: 4.7% -->
+        <circle cx="100" cy="100" r="80" fill="none"
+          stroke="#fb923c" stroke-width="24"
+          stroke-dasharray="23.5 478.7" stroke-dashoffset="-351.8"
+          stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <!-- center text -->
+        <text x="100" y="95" text-anchor="middle" class="donut-center-text" style="font-size:1.4rem">$25,793</text>
+        <text x="100" y="115" text-anchor="middle" class="donut-center-label">MXN/mes total</text>
+      </svg>
+    </div>
+
+    <div class="budget-items">
+      <div class="budget-item">
+        <div class="budget-dot" style="background:#f59e0b"></div>
+        <div class="budget-item-name">Renta (zona media)</div>
+        <div class="budget-item-value">$18,153</div>
+        <div class="budget-item-range">$15.7k–$22.5k</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background:#3b82f6"></div>
+        <div class="budget-item-name">Mandado</div>
+        <div class="budget-item-value">$2,820</div>
+        <div class="budget-item-range">$2.5k–$3.3k</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background:#a78bfa"></div>
+        <div class="budget-item-name">Ocio</div>
+        <div class="budget-item-value">$2,000</div>
+        <div class="budget-item-range">$1.2k–$3k</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background:#22c55e"></div>
+        <div class="budget-item-name">Servicios (luz, internet, gas, agua)</div>
+        <div class="budget-item-value">$1,620</div>
+        <div class="budget-item-range">$1k–$2.5k</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background:#fb923c"></div>
+        <div class="budget-item-name">Transporte</div>
+        <div class="budget-item-value">$1,200</div>
+        <div class="budget-item-range">$700–$1.6k</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deficit callout -->
+  <div style="margin-top:2.5rem; padding:2rem; background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.2); border-radius:16px; text-align:center;">
+    <div style="font-family:var(--font-mono); font-size:2.5rem; font-weight:700; color:var(--c-danger);">−$5,793</div>
+    <p style="font-size:0.92rem; color:var(--c-text-dim); margin-top:0.5rem;">Déficit mensual estimado (sueldo $20k − gasto $25.8k)</p>
+    <p style="font-size:0.82rem; color:var(--c-text-dim); margin-top:0.5rem; font-style:italic;">El ingreso de entrada no alcanza para cubrir el presupuesto base en zona media.</p>
+  </div>
+</section>
+
+<!-- ════════ FULL TABLE ════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<section class="section reveal" id="tabla">
+  <div class="section-label">Datos Consolidados</div>
+  <h2>Tabla resumen</h2>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Promedio</th>
+          <th>Rango</th>
+          <th>Zona / Detalle</th>
+          <th>Fuente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sueldo recién egresado Ing. Industrial</td>
+          <td class="num">$20,000</td>
+          <td class="num">$17,366–$23,000</td>
+          <td>Monterrey</td>
+          <td>OLA 1T-2025, Indeed, OCC</td>
+        </tr>
+        <tr>
+          <td>Renta — Fuera del AMM</td>
+          <td class="num">$7,109</td>
+          <td class="num">$5,673–$8,545</td>
+          <td>Periferia</td>
+          <td>Anuncios + inflación INEGI</td>
+        </tr>
+        <tr>
+          <td>Renta — Zona media</td>
+          <td class="num">$18,153</td>
+          <td class="num">$15,744–$22,474</td>
+          <td>Cinturón conurbado</td>
+          <td>Inmuebles24 (ene-2026)</td>
+        </tr>
+        <tr>
+          <td>Renta — Centro AMM</td>
+          <td class="num">$27,224</td>
+          <td class="num">$24,697–$29,751</td>
+          <td>Núcleo urbano</td>
+          <td>Inmuebles24 (ene-2026)</td>
+        </tr>
+        <tr>
+          <td>Transporte</td>
+          <td class="num">$1,200</td>
+          <td class="num">$700–$1,600</td>
+          <td>Zona media</td>
+          <td>Tarifas camión/metro 2025</td>
+        </tr>
+        <tr>
+          <td>Electricidad</td>
+          <td class="num">$550</td>
+          <td class="num">$300–$900</td>
+          <td>150–300 kWh/mes</td>
+          <td>Tarifa 1C CFE</td>
+        </tr>
+        <tr>
+          <td>Internet</td>
+          <td class="num">$550</td>
+          <td class="num">$435–$848</td>
+          <td>100–250 Mbps</td>
+          <td>Telmex, Totalplay, izzi</td>
+        </tr>
+        <tr>
+          <td>Gas LP</td>
+          <td class="num">$320</td>
+          <td class="num">$200–$450</td>
+          <td>10–20 kg/mes</td>
+          <td>CRE precios máximos</td>
+        </tr>
+        <tr>
+          <td>Agua</td>
+          <td class="num">$200</td>
+          <td class="num">$100–$300</td>
+          <td>7–12 m³/mes</td>
+          <td>SADM tarifas</td>
+        </tr>
+        <tr>
+          <td>Servicios (total)</td>
+          <td class="num">$1,620</td>
+          <td class="num">$1,035–$2,498</td>
+          <td>Zona media</td>
+          <td>Síntesis</td>
+        </tr>
+        <tr>
+          <td>Mandado (1 persona)</td>
+          <td class="num">$2,820</td>
+          <td class="num">$2,450–$3,300</td>
+          <td>Zona media</td>
+          <td>Canasta INEGI + extras</td>
+        </tr>
+        <tr>
+          <td>Ocio</td>
+          <td class="num">$2,000</td>
+          <td class="num">$1,200–$3,000</td>
+          <td>Zona media</td>
+          <td>Supuesto moderado</td>
+        </tr>
+        <tr class="total-row">
+          <td><strong>TOTAL gasto mensual (zona media)</strong></td>
+          <td class="num"><strong>$25,793</strong></td>
+          <td class="num"><strong>$21,134–$32,872</strong></td>
+          <td>Zona media</td>
+          <td>Composición integrada</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ════════ IMPLICATIONS ════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<section class="section reveal" id="implicaciones">
+  <div class="section-label">Implicaciones Socioeconómicas</div>
+  <h2>¿Qué significa esto en la práctica?</h2>
+  <p class="section-intro">La relación ingreso–renta funciona como una prueba de "esfuerzo estructural" del sistema económico para el recién egresado.</p>
+
+  <div class="implication-cards">
+    <div class="impl-card stress">
+      <div class="impl-number">Hallazgo 01</div>
+      <h3>Margen de estabilidad ~0%</h3>
+      <p>En zona media, la renta promedio (~$18.2k/mes) se aproxima al ingreso completo (~$20k/mes). Es como operar un sistema con margen de estabilidad cercano a cero: cualquier perturbación (desempleo temporal, gasto médico, inflación puntual) puede llevar al colapso financiero.</p>
+    </div>
+    <div class="impl-card floor">
+      <div class="impl-number">Hallazgo 02</div>
+      <h3>El piso de consumo vs. la realidad urbana</h3>
+      <p>La canasta alimentaria INEGI (~$2,455/persona/mes) y la línea urbana total (~$4,740/persona/mes) muestran el mínimo teórico. Pero el costo real urbano de una plaza como Monterrey opera significativamente por encima de esos umbrales.</p>
+    </div>
+    <div class="impl-card mobility">
+      <div class="impl-number">Hallazgo 03</div>
+      <h3>Impuesto de fricción periférico</h3>
+      <p>Los incrementos graduales en tarifas de transporte funcionan como un "impuesto de fricción" que impacta más a las periferias: a igual ingreso, más distancia = mayor costo de movilidad + mayor tiempo perdido (un recurso no recuperable).</p>
+    </div>
+  </div>
+
+  <!-- Conclusion -->
+  <div class="conclusion-box" style="margin-top:3rem;">
+    <div class="section-label" style="margin-bottom:1.5rem">Conclusión Analítica</div>
+    <p>Para 2025, un recién egresado que pretenda vivienda independiente en Monterrey enfrenta un <strong>trade-off clásico de economía urbana</strong>: renta alta cerca del centro vs. tiempo/costo de transporte desde la periferia.</p>
+    <p style="margin-top:1rem;">En ninguno de los tres escenarios geográficos el sueldo típico de entrada permite, por sí solo, costear de manera holgada el paquete completo de gastos. <strong>La vivienda compartida, el ingreso adicional (dual income), o la permanencia en el hogar familiar aparecen no como preferencia sino como necesidad funcional</strong> para la mayoría de perfiles de ingreso de entrada en la zona.</p>
+  </div>
+</section>
+
+<!-- ════════ SOURCES ════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<section class="section reveal" id="fuentes">
+  <div class="section-label">Fuentes</div>
+  <h2>Referencias y datos</h2>
+  <p class="section-intro">Todas las cifras están ancladas a fuentes oficiales y de mercado con fecha verificable.</p>
+
+  <div class="sources-grid">
+    <div class="source-item">
+      <span class="source-num">01</span>
+      <div>
+        <p><strong style="color:var(--c-text)">INEGI</strong> — Líneas de Pobreza (canasta alimentaria y total, mensual 2025)</p>
+        <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/lp/lp2025_10.pdf" target="_blank" rel="noopener">inegi.org.mx</a>
+      </div>
+    </div>
+    <div class="source-item">
+      <span class="source-num">02</span>
+      <div>
+        <p><strong style="color:var(--c-text)">Observatorio Laboral</strong> — Ingreso mensual promedio por área/carrera (1T-2025)</p>
+        <a href="https://www.observatoriolaboral.gob.mx/static/estudios-publicaciones/Ingenierias.html" target="_blank" rel="noopener">observatoriolaboral.gob.mx</a>
+      </div>
+    </div>
+    <div class="source-item">
+      <span class="source-num">03</span>
+      <div>
+        <p><strong style="color:var(--c-text)">Inmuebles24</strong> — Índice local de renta (ene-2026, por municipio y colonia)</p>
+        <a href="https://www.inmuebles24.com/blog/wp-content/uploads/2026/02/INDEX_MTREY_REPORTE_2026-01.pdf" target="_blank" rel="noopener">inmuebles24.com</a>
+      </div>
+    </div>
+    <div class="source-item">
+      <span class="source-num">04</span>
+      <div>
+        <p><strong style="color:var(--c-text)">Indeed</strong> — Promedio local de sueldos Monterrey Centro (30/jul/2025)</p>
+        <a href="https://mx.indeed.com/career/ingeniero-industrial/salaries/Monterrey-Centro--N.-L" target="_blank" rel="noopener">mx.indeed.com</a>
+      </div>
+    </div>
+    <div class="source-item">
+      <span class="source-num">05</span>
+      <div>
+        <p><strong style="color:var(--c-text)">OCCMundial</strong> — Rangos salariales para Ing. Industrial en Monterrey</p>
+        <a href="https://www.occ.com.mx/empleos/de-ingeniero-industrial/en-nuevo-leon/en-la-ciudad-de-monterrey/" target="_blank" rel="noopener">occ.com.mx</a>
+      </div>
+    </div>
+    <div class="source-item">
+      <span class="source-num">06</span>
+      <div>
+        <p><strong style="color:var(--c-text)">CRE</strong> — Precios máximos gas LP por región/semana (2025)</p>
+        <a href="https://www.gob.mx/cre/documentos/precios-maximos-aplicables-de-gas-lp" target="_blank" rel="noopener">gob.mx/cre</a>
+      </div>
+    </div>
+    <div class="source-item">
+      <span class="source-num">07</span>
+      <div>
+        <p><strong style="color:var(--c-text)">CFE</strong> — Tarifa doméstica 1C (bloques, aplicación regional)</p>
+        <a href="https://app.cfe.mx/aplicaciones/ccfe/tarifas/TarifasCRECasa/Tarifas/Tarifa1C.aspx" target="_blank" rel="noopener">app.cfe.mx</a>
+      </div>
+    </div>
+    <div class="source-item">
+      <span class="source-num">08</span>
+      <div>
+        <p><strong style="color:var(--c-text)">SADM</strong> — Tarifas oficiales de agua y drenaje de Monterrey</p>
+        <a href="https://www.sadm.gob.mx/Pfiles/Uploads/Documentos/535.pdf" target="_blank" rel="noopener">sadm.gob.mx</a>
+      </div>
+    </div>
+    <div class="source-item">
+      <span class="source-num">09</span>
+      <div>
+        <p><strong style="color:var(--c-text)">Tarifas transporte público 2025</strong> — Metro y camión en Nuevo León</p>
+        <a href="https://www.milenio.com/politica/comunidad/cuanto-cuestan-las-nuevas-tarifas-de-camiones-y-taxis-nuevo-leon-2025" target="_blank" rel="noopener">milenio.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <p>Investigación socioeconómica · Monterrey, Nuevo León · Datos 2025</p>
+  <p style="margin-top:0.5rem; font-size:0.72rem; color:var(--c-text-dim);">Página generada con fines académicos. Todos los datos provienen de fuentes públicas citadas.</p>
+</footer>
+
+<!-- ════════ SCROLL REVEAL JS ════════ -->
+<script>
+// Intersection Observer for scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Active nav link
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (scrollY >= top) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').includes(current)) link.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
